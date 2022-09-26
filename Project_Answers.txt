@@ -1,0 +1,39 @@
+Platform Interview
+
+Phase 1:
+
+	- Initial String: docker run platform-interview:0.0.1-SNAPSHOT --p '8080:8080'
+	- Ammended String: sudo docker run -d -p 8080:8080 platform-interview:0.0.1-SNAPSHOT 
+	Result: Welcome to the Platform team!
+Reason: --p is just the start of a full command, like --publish in this case. you want -p or -P to expose ports.
+
+
+Phase 2: Developer Advocate
+
+	- Create prometheus.yaml file and store it in main repo.
+	
+	
+	- NOTE: There were issues finding the site from prometheus and I think it derives from my local WSL instance. I think its too old, to get the newer version of docker that it needs to properly use the new custom network functionality. The final version was something like this:
+		-- sudo docker network create platform_int
+		-- sudo docker run --name prometheus -d --net platform_int -p 9090:9090 -v /etc/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
+		-- sudo docker run --name platform-int -d --net platform_int -p 8080:8080 platform-interview:0.0.1-SNAPSHOT
+		
+		
+Phase 3: Developer Advocate
+
+	- Grafana
+		
+	- Requirements: 
+		-- Metrics, Logs, Tracing if possible
+	- My Personal Requirements:
+		-- Thorough overwatch and quick response times. Feedback is an issue that most plagues developers and their ability to fix problems quickly and early, and slow response is the heel of every systems team. Being able to identify and fix issues before they become major is one of the most important things we can do as a DevOps team.
+
+	- Features:
+		- Lots of graphing for quick understanding and sharp dashboards that translate well into a board room.
+		- Metrics to see the impact of change.
+		- Logs for following breadcrumbs, incredibly essential no matter which environment is being used.
+		- Traces that are simple and expansive, that aren't bound up by overhead of the various tools needed to groom some kinds of data sources.
+		- Grafana is very cloud native and is tightly integrated with Kubernetes. This is great news because it means Kubernetes, containers,  declaritive programming, and scalability.
+		- They also have other tools to handle incident management and on-call rotations. They support automating processes throughout their tool suite which makes life considerably easier for everyone.
+		- They have tons of training available online as well as a healthy slack community. A healthy and supportive community is always a good sign that a product is thriving and will continue to thrive. There's nothing worse than buying into a product and finding out that its dead on the vine.
+		- The best part: a free forever plan for testing out their product at your leisure. Much better than begging for licenses and struggling with limited trial versions that are meant for an enterprise organization.

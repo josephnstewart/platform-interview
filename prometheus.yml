@@ -1,0 +1,13 @@
+# Global Config
+global:
+  scrape_interval: 15s # Default is every 1 minute.
+  evaluation_interval: 15s  # The default is every 1 minute.
+  # scrape_timeout is set to the global default (10s).
+
+# A scrape configuration containing exactly one endpoint to scrape:
+scrape_configs:
+  - job_name: "platform_interview"
+    static_configs:
+      - targets: ['localhost:8080','localhost:9090']
+    
+                
